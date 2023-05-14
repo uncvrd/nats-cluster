@@ -1,3 +1,16 @@
+Deploy App
+
+`fly deploy --dockerfile Dockerfile --config fly.[ENVIRONMENT].toml`
+
+Clone Machine in different regions
+
+`fly machine clone --region [REGION] [MACHINE_ID] -c fly.[ENVIRONMENT].toml`
+
+Create Volumes in different regions
+
+`fly volumes create foundry_nats_cluster_data -s 1 -r [REGION] -a foundry-nats-cluster`
+
+
 # Global NATS Cluster
 
 [NATS](https://docs.nats.io/) is an open source messaging backend suited to many use cases and deployment scenarios. We use it for internal communications at Fly. This repo shows how to use it for your application.

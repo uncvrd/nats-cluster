@@ -25,15 +25,15 @@ func main() {
 
 	svisor := supervisor.New("flynats", 5*time.Minute)
 
-	svisor.AddProcess(
-		"exporter",
-		"nats-exporter -varz 'http://fly-local-6pn:8222'",
-		supervisor.WithRestart(0, 1*time.Second),
-	)
+	// svisor.AddProcess(
+	// 	"exporter",
+	// 	"nats-exporter -varz 'http://fly-local-6pn:8222'",
+	// 	supervisor.WithRestart(0, 1*time.Second),
+	// )
 
 	svisor.AddProcess(
 		"nats-server",
-		"nats-server -js -c /etc/nats.conf --logtime=false",
+		"doppler run -- nats-server -c /etc/nats.conf --logtime=false",
 		supervisor.WithRestart(0, 1*time.Second),
 	)
 
